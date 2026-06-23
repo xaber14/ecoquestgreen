@@ -73,7 +73,7 @@
 
 /* ── Posisi Kamu card ── */
 .posisi-card {
-  background: linear-gradient(135deg, #2d7cb8 0%, #1a6098 100%);
+  background: rgba(5, 96, 58, 0.86);
   border-radius: 12px;
   padding: 12px;
   display: flex;

@@ -72,10 +72,37 @@ function initUploadFoto() {
   removeBtn.addEventListener('click', resetUpload);
 
   submitBtn.addEventListener('click', () => {
-    // ── Selesaikan misi via state ──
     const missionId = getActiveMissionId();
-    if (missionId && typeof onMissionSubmitted === 'function') {
-      onMissionSubmitted(missionId);
+
+    // Konversi foto ke base64 lalu simpan ke state sebelum complete misi
+    if (missionId && thumb.src) {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        // resize max 600px agar tidak terlalu besar di localStorage
+        const MAX = 600;
+        let w = img.naturalWidth, h = img.naturalHeight;
+        if (w > MAX || h > MAX) {
+          if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+          else       { w = Math.round(w * MAX / h); h = MAX; }
+        }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const base64 = canvas.toDataURL('image/jpeg', 0.8);
+
+        // simpan foto ke state.missions[id].photo
+        if (typeof EQ !== 'undefined') {
+          const state = EQ.load();
+          const mission = state.missions.find(m => m.id === missionId);
+          if (mission) { mission.photo = base64; EQ.save(state); }
+        }
+
+        if (typeof onMissionSubmitted === 'function') onMissionSubmitted(missionId);
+      };
+      img.src = thumb.src;
+    } else {
+      if (missionId && typeof onMissionSubmitted === 'function') onMissionSubmitted(missionId);
     }
 
     popupTime.textContent = 'Telah disubmit pada ' + formatNow();

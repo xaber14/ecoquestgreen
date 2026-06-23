@@ -102,6 +102,16 @@ function initLeaderboard() {
     });
   });
 
+  // Load foto profil user dari state (sama dengan Homepage)
+  const state = EQ.load();
+  if (state.user.avatar) {
+    const avatarEl = document.getElementById('posisiAvatar');
+    if (avatarEl) {
+      avatarEl.innerHTML = `<img src="${state.user.avatar}" alt="Foto Profil"
+        style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />`;
+    }
+  }
+
   // initial render — default Mingguan (weekly)
   renderLeaderboard('weekly');
 }

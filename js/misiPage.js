@@ -31,8 +31,24 @@ function renderMissionCard(mission) {
   card.querySelector('.mc-done-overlay')?.remove();
   card.classList.toggle('is-done', isDone);
 
+  // Thumbnail: foto submission jika ada, fallback ke emoji
+  const thumbEl = card.querySelector('.mc-thumb');
+  if (thumbEl) {
+    if (isDone && mission.photo) {
+      thumbEl.innerHTML = `<img src="${mission.photo}" alt="Foto Misi"
+        style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" />`;
+    } else {
+      // pastikan kembali ke emoji jika reset
+      if (!thumbEl.querySelector('img')) {/* biarkan emoji tetap ada */}
+    }
+  }
+
   if (isDone) {
-    // badge "Selesai" biru absolut di kanan atas card
+    // Tidak bisa diklik lagi
+    card.style.pointerEvents = 'none';
+    card.style.cursor = 'default';
+
+    // Badge Selesai
     const badge = document.createElement('div');
     badge.className = 'mc-done-overlay';
     badge.innerHTML = `
@@ -41,6 +57,9 @@ function renderMissionCard(mission) {
         <span>Selesai</span>
       </div>`;
     card.appendChild(badge);
+  } else {
+    card.style.pointerEvents = '';
+    card.style.cursor = 'pointer';
   }
 }
 
