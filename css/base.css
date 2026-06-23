@@ -1,0 +1,147 @@
+/* ============================================================
+   EcoQuest — Base / Shared Styles
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ── Phone wrapper ── */
+.phone {
+  width: 100%;
+  max-width: 400px;
+  min-height: 100vh;
+  background: #ECF8E6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  padding: 20px 16px 32px;
+}
+
+/* ── Nature background (homepage & misi) ── */
+.phone--nature {
+  background-color: #ECF8E6;
+  background-image: url("../assets/bg-nature.png");
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: 22px;
+}
+
+/* ── Generic card ── */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--gap-md);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Progress bar ── */
+.bar-track {
+  width: 100%;
+  height: 12px;
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  box-shadow: var(--shadow-inset);
+}
+.bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* ── Difficulty badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px 2px 6px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+  align-self: flex-start;
+}
+.badge-easy   { background: var(--color-easy); }
+.badge-medium { background: var(--color-medium); }
+.badge-hard   { background: var(--color-hard); }
+
+/* ── Utility text styles ── */
+.text-primary   { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-brand     { color: var(--color-primary); }
+.text-bold      { font-weight: 700; }
+.text-semibold  { font-weight: 600; }
+.text-sm   { font-size: 12px; letter-spacing: -0.24px; line-height: 1.3; }
+.text-base { font-size: 14px; letter-spacing: -0.28px; line-height: 1.3; }
+.text-md   { font-size: 16px; letter-spacing: -0.32px; line-height: 1.3; }
+.text-lg   { font-size: 20px; letter-spacing: -0.4px;  line-height: 1.3; }
+.text-xl   { font-size: 28px; letter-spacing: -0.56px; line-height: 1.3; }
+
+/* ============================================================
+   Microinteraction — efek "tertekan" (press) ala Gojek
+   Berlaku untuk semua button, link CTA, dan elemen klikable
+   ============================================================ */
+button,
+a.banner,
+a.cta-btn,
+a.lb-cta,
+.tab-btn,
+.lb-switch-btn,
+.sheet-upload-btn,
+.reward-item,
+.mission-card,
+.back-btn,
+.bonus-btn,
+.avatar-edit-btn,
+.shutter-btn,
+.sheet-close,
+.uploaded-remove {
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.15s ease,
+              opacity 0.15s ease,
+              box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* saat ditekan → mengecil seperti tertekan ke dalam */
+button:active,
+a.banner:active,
+a.cta-btn:active,
+a.lb-cta:active,
+.tab-btn:active,
+.lb-switch-btn:active,
+.sheet-upload-btn:active,
+.reward-item:active,
+.back-btn:active,
+.bonus-btn:active,
+.avatar-edit-btn:active,
+.sheet-close:active,
+.uploaded-remove:active,
+.sheet-submit-btn:active,
+.popup-btn:active,
+.crop-save-btn:active,
+.reset-confirm-btn:active,
+.reset-cancel-btn:active {
+  transform: scale(0.95);
+}
+
+/* elemen besar (card/banner) cukup mengecil sedikit saja */
+.mission-card:active,
+.reward-item:active {
+  transform: scale(0.97);
+}
+
+/* shutter kamera punya animasi sendiri, biarkan lebih kecil */
+.shutter-btn:active {
+  transform: scale(0.90);
+}

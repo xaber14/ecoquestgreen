@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoQuest — Top 10 Leaderboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/leaderboard.css" />
+</head>
+<body>
+<div class="phone">
+
+  <!-- Header -->
+  <div class="lb-header">
+    <a class="back-btn" href="index.html" aria-label="Kembali">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 12H5M11 6l-6 6 6 6" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="lb-title">Top 10 Leaderboard</div>
+  </div>
+
+  <!-- Switch -->
+  <div class="lb-switch">
+    <button class="lb-switch-btn active" data-cat="weekly">
+      <span class="sw-main">Mingguan</span>
+      <span class="sw-sub">Weekly Knights</span>
+    </button>
+    <button class="lb-switch-btn" data-cat="monthly">
+      <span class="sw-main">Bulanan</span>
+      <span class="sw-sub">The 3 Barons</span>
+    </button>
+  </div>
+
+  <!-- Posisi Kamu -->
+  <div class="posisi-card">
+    <div class="posisi-avatar">
+      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="14" r="7" fill="#fff" opacity="0.9"/>
+        <path d="M5 36c0-7.732 6.268-14 14-14s14 6.268 14 14" fill="#fff" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="posisi-info">
+      <div class="posisi-top">
+        <div class="posisi-label">Posisi Kamu <span class="posisi-rank" id="posisiRank">14</span></div>
+        <div class="posisi-pts" id="posisiPts">400 Pts</div>
+      </div>
+      <div class="posisi-hint" id="posisiNeed">Butuh <strong>501 Pts</strong> untuk naik podium</div>
+    </div>
+  </div>
+
+  <!-- Podium -->
+  <div class="podium-wrap">
+    <div class="podium">
+      <!-- Rank 2 -->
+      <div class="podium-col">
+        <div class="podium-avatar silver">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="16" r="9" fill="#aab4be"/>
+            <path d="M6 42c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#aab4be"/>
+          </svg>
+        </div>
+        <div class="podium-medal medal-2">2</div>
+        <div class="podium-bar second">
+          <div class="podium-pts" id="podiumPtsTwo">1270 Pts</div>
+          <div class="podium-name" id="podiumNameTwo">Tasya</div>
+        </div>
+      </div>
+      <!-- Rank 1 -->
+      <div class="podium-col">
+        <div class="podium-avatar gold">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="16" r="9" fill="#e0a800"/>
+            <path d="M6 42c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#e0a800"/>
+          </svg>
+        </div>
+        <div class="podium-medal medal-1">1</div>
+        <div class="podium-bar first">
+          <div class="podium-pts" id="podiumPtsOne">1590 Pts</div>
+          <div class="podium-name" id="podiumNameOne">Bayu</div>
+        </div>
+      </div>
+      <!-- Rank 3 -->
+      <div class="podium-col">
+        <div class="podium-avatar bronze">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="16" r="9" fill="#c89060"/>
+            <path d="M6 42c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#c89060"/>
+          </svg>
+        </div>
+        <div class="podium-medal medal-3">3</div>
+        <div class="podium-bar third">
+          <div class="podium-pts" id="podiumPtsThree">900 Pts</div>
+          <div class="podium-name" id="podiumNameThree">Andi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ranking 4-10 -->
+  <div class="rank-list" id="rankList"></div>
+
+  <!-- Ketentuan -->
+  <div class="ketentuan">
+    <div class="ketentuan-title">Ketentuan Leaderboard</div>
+    <div class="ketentuan-grid">
+      <div class="ketentuan-box">
+        <div class="ketentuan-box-label">Periode Minggu ini</div>
+        <div class="ketentuan-box-val" id="periodeVal">6 - 10 April 2026</div>
+      </div>
+      <div class="ketentuan-box">
+        <div class="ketentuan-box-label">Reset Leaderboard</div>
+        <div class="ketentuan-box-val" id="resetVal">Setiap Senin, 00:00 WIB</div>
+      </div>
+    </div>
+    <div class="ketentuan-note" id="noteText">
+      Pemenang <strong>Weekly Knights</strong> akan diumumkan pada hari Jumat bulan yang akan datang
+    </div>
+  </div>
+
+  <!-- Lihat Hadiah -->
+  <a class="lb-cta" href="hadiah.html">
+    <span>Lihat Hadiah</span>
+  </a>
+
+</div>
+
+<script src="js/leaderboard.js"></script>
+<script src="js/entrance.js"></script>
+<script>
+  initLeaderboard();
+  initEntrance(['.lb-header', '.lb-switch', '.posisi-card', '.podium-wrap', '.rank-list', '.ketentuan', '.lb-cta']);
+</script>
+</body>
+</html>

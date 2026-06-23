@@ -1,0 +1,230 @@
+/* ============================================================
+   EcoQuest — Halaman Detail Hadiah
+   ============================================================ */
+
+/* Override gradient: halaman hadiah full putih */
+body.hadiah-page .phone {
+  background: #ffffff;
+  padding: 0;
+  gap: 0;
+}
+
+/* ── Header (full-width, sticky, nempel tepi) ── */
+.hadiah-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  width: 100%;
+}
+.hadiah-header .back-btn {
+  flex-shrink: 0;
+  box-shadow: none;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+}
+.hadiah-header-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.36px;
+  line-height: 1.3;
+}
+
+/* ── Content wrapper (padding di sini, bukan di .phone) ── */
+.hadiah-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  width: 100%;
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  border-radius: 100px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  background: #f7f7f7;
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+}
+.tab-btn.active {
+  background: var(--color-primary-pale);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ── Tab panels ── */
+.tab-panel { display: none; flex-direction: column; gap: 24px; width: 100%; }
+.tab-panel.active { display: flex; }
+
+/* ── Steps (cara mendapatkan) ── */
+.steps-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+.step-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+/* garis konektor: dari bawah kotak nomor item ini sampai kotak nomor item berikutnya.
+   Ditempel di setiap .step-item KECUALI yang terakhir.
+   top:40px = bawah kotak nomor; bottom:-24px = menembus gap sampai kotak berikutnya. */
+.step-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  bottom: -24px;
+  width: 1px;
+  background: var(--color-primary);
+  z-index: 0;
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-primary-pale);
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  letter-spacing: -0.32px;
+  position: relative;
+  z-index: 1;
+}
+.step-body { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+}
+.step-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+}
+
+/* ── Announcement box ── */
+.announcement-box {
+  background: var(--color-primary-pale);
+  border: 1px solid #cfe4f4;
+  border-radius: 10px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+.ann-badge {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+  padding: 2px 8px 2px 6px;
+  border-radius: 6px;
+}
+.ann-text {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+  text-align: center;
+}
+.ann-text strong {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ── Daftar Hadiah ── */
+.daftar-section { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+.daftar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  line-height: 1.3;
+}
+.daftar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 16px;
+}
+.daftar-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.daftar-thumb {
+  width: 61px;
+  height: 61px;
+  border-radius: 10px;
+  background: transparent;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.daftar-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.daftar-info { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+.daftar-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+}
+.daftar-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+}

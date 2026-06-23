@@ -1,0 +1,268 @@
+/* ============================================================
+   EcoQuest — Entrance Animations
+   Komponen muncul dengan fade + slide-up bertahap (staggered)
+   ============================================================ */
+
+@keyframes eq-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes eq-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes eq-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Elemen dengan kelas ini akan dianimasikan saat muncul.
+   Awalnya disembunyikan (opacity 0) lalu di-trigger via JS. */
+.eq-animate {
+  opacity: 0;
+}
+
+.eq-animate.eq-in {
+  animation: eq-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Variasi animasi */
+.eq-animate.eq-fade.eq-in   { animation-name: eq-fade-in; }
+.eq-animate.eq-scale.eq-in  { animation-name: eq-scale-in; }
+
+/* Hormati preferensi user yang tidak suka animasi berlebih */
+@media (prefers-reduced-motion: reduce) {
+  .eq-animate,
+  .eq-animate.eq-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   Level-Up Popup
+   ============================================================ */
+
+/* Backdrop */
+.levelup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.levelup-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Modal card */
+.levelup-modal {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  width: calc(100% - 48px);
+  max-width: 340px;
+  padding: 32px 24px 24px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(10, 83, 136, 0.25);
+  overflow: hidden;
+  transform: scale(0.85) translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+.levelup-overlay.is-open .levelup-modal {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Glow ring di belakang ikon */
+.levelup-glow {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d1fae5 0%, #F6FEF9 60%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  position: relative;
+}
+.levelup-glow::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2.5px solid #39B575;
+  opacity: 0.4;
+  animation: levelup-ring-pulse 1.8s ease-in-out infinite;
+}
+@keyframes levelup-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50%       { transform: scale(1.12); opacity: 0.15; }
+}
+
+/* Badge level besar */
+.levelup-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #05603A 0%, #39B575 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  box-shadow: 0 8px 20px rgba(10, 83, 136, 0.4);
+}
+
+/* Label kecil di atas judul */
+.levelup-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: 6px;
+}
+
+/* Judul utama */
+.levelup-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+/* Rank chip */
+.levelup-rank-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px 0 16px;
+}
+
+/* Divider tipis */
+.levelup-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 0 16px;
+}
+
+/* Stat row */
+.levelup-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+.levelup-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.levelup-stat-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.4px;
+}
+.levelup-stat-lbl {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Tombol CTA */
+.levelup-cta {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+.levelup-cta:hover   { background: #047857; }
+.levelup-cta:active  { transform: scale(0.97); }
+
+/* Confetti pieces */
+.levelup-confetti {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 160px;
+  pointer-events: none;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  top: -12px;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(170px) rotate(720deg); opacity: 0; }
+}
+
+/* Stars burst */
+.levelup-stars {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  pointer-events: none;
+}
+.star-burst {
+  position: absolute;
+  font-size: 18px;
+  animation: star-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+@keyframes star-pop {
+  0%   { transform: translate(0, 0) scale(0); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,376 @@
+/* ============================================================
+   EcoQuest — Misi Saya Page Styles
+   ============================================================ */
+
+/* ── Phosphor Icons sizing ── */
+.bonus-icon {
+  font-size: 16px;
+  color: #f3f3f3;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.time-icon {
+  font-size: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.info-icon {
+  font-size: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-lg);
+  padding: 8px 0 4px;
+}
+.header-left { display: flex; align-items: center; gap: var(--gap-lg); min-width: 0; }
+.back-btn {
+  width: 32px; height: 32px;
+  border-radius: 800px;
+  background: var(--color-white);
+  box-shadow: none;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer; flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.back-btn:hover  { opacity: 0.8; }
+.back-btn svg { width: 22px; height: 22px; }
+.header-title {
+  font-size: 20px; font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.4px; line-height: 1.3;
+}
+.bonus-btn {
+  background: var(--color-text-primary);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  gap: var(--gap-xs);
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.bonus-btn:hover  { opacity: 0.85; }
+.bonus-btn svg, .bonus-btn i { width: 16px; height: 16px; font-size: 16px; line-height: 1; }
+.bonus-btn span {
+  font-size: 14px; font-weight: 600;
+  color: #f3f3f3;
+  letter-spacing: -0.28px; line-height: 1.15;
+}
+
+/* ── Sisa Waktu Card ── */
+.time-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+.time-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-sm);
+}
+.time-label {
+  display: flex; align-items: center; gap: var(--gap-sm);
+  font-size: 16px; font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px; line-height: 1.3;
+}
+.time-label svg, .time-label i { width: 20px; height: 20px; flex-shrink: 0; font-size: 20px; line-height: 1; }
+
+/* countdown: segmen angka + satuan bertumpuk */
+.time-value {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  white-space: nowrap;
+}
+.cd-seg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 28px;
+}
+.cd-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+}
+.cd-unit {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6b7280;
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+.time-end { font-size: 12px; color: var(--color-text-secondary); letter-spacing: -0.24px; line-height: 1.3; }
+.time-end strong { font-weight: 600; color: var(--color-text-secondary); }
+
+/* ── Misi Utama Section ── */
+.mission-section {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card-lg);
+  padding: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  align-items: center;
+  overflow: hidden;
+}
+.mission-tab {
+  align-self: center;
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 140%);
+  color: var(--color-white);
+  font-size: 16px; font-weight: 600;
+  line-height: 1.5;
+  padding: 4px 10px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  width: 171px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(10,83,136,0.3);
+}
+.mission-intro {
+  font-size: 12px; font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.24px; line-height: 1.3;
+  text-align: center;
+  padding: 0 12px;
+}
+
+/* ── Horizontal scroll cards ── */
+.mission-scroll {
+  display: flex;
+  gap: var(--gap-md);
+  overflow-x: auto;
+  width: 100%;
+  padding: 4px 0 10px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.mission-scroll.is-dragging { cursor: grabbing; }
+/* spacer di awal dan akhir supaya card pertama/terakhir punya margin 24px dari tepi */
+.mission-scroll::before,
+.mission-scroll::after {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+}
+.mission-scroll::-webkit-scrollbar { height: 6px; }
+.mission-scroll::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: 10px;
+  margin: 0 12px;
+}
+.mission-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+.mission-scroll::-webkit-scrollbar-thumb:hover { background: #034d2e; }
+
+.mission-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0px 2px 3.3px rgba(0,0,0,0.13);
+  padding: var(--gap-md);
+  width: 190px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  scroll-snap-align: start;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 2px 3.3px rgba(0,0,0,0.13);
+}
+.mc-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+}
+.mc-thumb {
+  width: 64px; height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--color-green-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.mc-pts {
+  background: var(--color-green-light);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  font-size: 14px; font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.28px; line-height: 1.3;
+  white-space: nowrap;
+}
+.mc-pts-blue { background: var(--color-primary-pale); }
+.mc-body { display: flex; flex-direction: column; gap: var(--gap-sm); }
+.mc-title {
+  font-size: 16px; font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px; line-height: 1.3;
+}
+.mc-desc {
+  font-size: 14px; font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: -0.28px; line-height: 1.3;
+}
+
+/* mission footer counter */
+.mission-counts {
+  display: flex; align-items: center;
+  justify-content: center; gap: var(--gap-sm);
+  width: 100%; padding: 0 12px;
+}
+.mission-counts span { font-size: 14px; color: var(--color-text-primary); line-height: 1.5; }
+.mission-counts strong { font-weight: 700; }
+.mc-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--color-text-primary); flex-shrink: 0; }
+
+/* ── Info Cards (Bonus) ── */
+.info-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column;
+}
+.info-main {
+  background: var(--color-white);
+  padding: var(--gap-md);
+  display: flex; flex-direction: column;
+  gap: var(--gap-sm);
+}
+.info-head { display: flex; align-items: center; gap: var(--gap-sm); }
+.info-head svg, .info-head i { width: 20px; height: 20px; flex-shrink: 0; font-size: 20px; line-height: 1; }
+.info-head-title {
+  font-size: 16px; font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px; line-height: 1.3;
+}
+.info-desc {
+  padding-left: 26px;
+  font-size: 14px; font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: -0.28px; line-height: 1.3;
+}
+.info-desc strong { font-weight: 700; }
+.info-footer {
+  background: var(--color-bonus-bg);
+  padding: 8px 12px;
+  display: flex; align-items: center;
+  justify-content: center; gap: var(--gap-xs);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: -0.28px; line-height: 1.3;
+}
+.info-footer .lbl { color: var(--color-text-primary); }
+.info-footer .val { color: var(--color-bonus-dark); }
+
+/* ── Reset pill ── */
+.reset-pill {
+  align-self: center;
+  background: var(--color-white);
+  border-radius: var(--radius-full);
+  padding: 8px 18px 8px 8px;
+  display: flex; align-items: center; gap: var(--gap-xs);
+  box-shadow: var(--shadow-card);
+}
+.reset-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+.reset-pill span {
+  font-size: 12px; font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.24px; line-height: 1.3;
+}
+
+/* ── Card Misi: state selesai ── */
+.mission-card.is-done {
+  position: relative;
+}
+/* badge Selesai biru, posisi absolut di kanan atas card */
+.mc-done-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  pointer-events: none;
+}
+.mission-card.is-done {
+  position: relative;
+}
+/* beri ruang di kanan atas: poin digeser ke bawah badge */
+.mission-card.is-done .mc-pts {
+  margin-top: 30px;
+}
+.mc-done-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 100px;
+  padding: 4px 10px 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.mc-done-badge i { font-size: 14px; line-height: 1; }
+
+/* ── Sheet: done notice ── */
+.sheet-done-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #16a34a;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.sheet-done-notice i { font-size: 18px; }
+
+/* ── Level Up Toast ── */
+.levelup-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 16px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(10,83,136,0.35);
+  z-index: 999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: 320px;
+  width: calc(100% - 48px);
+}
+.levelup-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.levelup-toast i { font-size: 28px; flex-shrink: 0; }
+.toast-title { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+.toast-sub   { font-size: 13px; font-weight: 400; opacity: 0.9; }

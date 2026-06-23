@@ -1,0 +1,365 @@
+/* ============================================================
+   EcoQuest — Halaman Leaderboard
+   ============================================================ */
+
+/* ── Header ── */
+.lb-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0 4px;
+  width: 100%;
+}
+.lb-header .back-btn {
+  width: 32px; height: 32px;
+  border-radius: 800px;
+  background: #fff;
+  box-shadow: none;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer; flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.lb-header .back-btn:hover { opacity: 0.8; }
+.lb-header .back-btn svg { width: 22px; height: 22px; }
+.lb-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.4px;
+  line-height: 1.3;
+}
+
+/* ── Switch toggle (Mingguan / Bulanan) ── */
+.lb-switch {
+  display: flex;
+  gap: 4px;
+  background: #fff;
+  border-radius: 1000px;
+  padding: 4px;
+  width: 100%;
+  box-shadow: var(--shadow-card);
+}
+.lb-switch-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 1000px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
+  color: var(--color-text-secondary);
+}
+.lb-switch-btn .sw-main {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.28px;
+  line-height: 1.3;
+}
+.lb-switch-btn .sw-sub {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: -0.22px;
+  line-height: 1.2;
+}
+.lb-switch-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ── Posisi Kamu card ── */
+.posisi-card {
+  background: linear-gradient(135deg, #2d7cb8 0%, #1a6098 100%);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.posisi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.posisi-avatar svg { width: 38px; height: 38px; }
+.posisi-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.posisi-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+.posisi-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.posisi-rank {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.posisi-pts {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd233;
+  letter-spacing: -0.32px;
+}
+.posisi-hint {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+}
+.posisi-hint strong { font-weight: 700; color: #fff; }
+
+/* ── Podium ── */
+.podium-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 36px;
+}
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+.podium-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.podium-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  overflow: hidden;
+  background: #cdd5dd;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.podium-avatar svg { width: 44px; height: 44px; }
+.podium-avatar.gold   { width: 64px; height: 64px; border-color: #ffd233; }
+.podium-medal {
+  position: absolute;
+  top: 38px;
+  z-index: 3;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.podium-avatar.gold + .podium-medal { top: 46px; }
+.medal-1 { background: #f5b800; }
+.medal-2 { background: #9aa7b5; }
+.medal-3 { background: #cd7f32; }
+
+.podium-bar {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 6px 14px;
+  gap: 2px;
+}
+.podium-bar.first  { background: linear-gradient(180deg, #fff3cc 0%, #ffe488 100%); height: 130px; }
+.podium-bar.second { background: linear-gradient(180deg, #eef1f4 0%, #dde3e9 100%); height: 105px; }
+.podium-bar.third  { background: linear-gradient(180deg, #fde3d4 0%, #f9cbb0 100%); height: 88px; }
+
+.podium-pts {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  line-height: 1.2;
+}
+.podium-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.26px;
+}
+
+/* ── Ranking list ── */
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.rank-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+}
+.rank-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.rank-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #c026d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.rank-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.28px;
+}
+.rank-pts {
+  text-align: right;
+  flex-shrink: 0;
+}
+.rank-pts-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.2;
+}
+.rank-pts-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+/* ── Ketentuan ── */
+.ketentuan {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding-top: 8px;
+}
+.ketentuan-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  text-align: center;
+}
+.ketentuan-grid {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.ketentuan-box {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+.ketentuan-box-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.26px;
+  line-height: 1.3;
+}
+.ketentuan-box-val {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+}
+.ketentuan-note {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.24px;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.ketentuan-note strong { font-weight: 700; color: var(--color-text-primary); }
+
+/* ── Lihat Hadiah CTA ── */
+.lb-cta {
+  width: 100%;
+  min-height: 44px;
+  background: var(--color-primary);
+  border-radius: 1000px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+.lb-cta:hover  { background: #047857; }
+.lb-cta:active { background: #034d2e; }
+.lb-cta span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.32px;
+}
+
+/* panel show/hide */
+.lb-panel { display: none; flex-direction: column; gap: 12px; width: 100%; }
+.lb-panel.active { display: flex; }

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoQuest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/homepage.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+</head>
+<body>
+<div class="phone phone--nature">
+
+  <!-- Logo -->
+  <div class="logo-bar">
+    <img src="assets/logo-ecoquest.png" alt="EcoQuest" />
+  </div>
+
+  <!-- Bio Card -->
+  <div class="card bio-card">
+    <div class="bio-top">
+      <div class="bio-left">
+        <div class="avatar-wrap">
+          <div class="avatar" id="hpAvatar">
+            <!-- Ganti dengan foto profil asli -->
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="16" r="9" fill="#b5bcc4"/>
+              <path d="M6 42c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#b5bcc4"/>
+            </svg>
+          </div>
+          <button class="avatar-edit-btn" id="avatarEditBtn" type="button" aria-label="Ganti foto profil">
+            <i class="ph ph-pencil-simple"></i>
+          </button>
+        </div>
+        <div class="bio-info">
+          <div class="bio-name" id="hpName">Leon Kennedy</div>
+          <div class="bio-badge">
+            <i class="ph ph-person bio-badge-icon"></i>
+            <span class="bio-badge-text" id="hpRank">Rookie</span>
+          </div>
+        </div>
+      </div>
+      <div class="level-badge" id="hpLevel">Lv.0</div>
+    </div>
+
+    <!-- EXP Bar -->
+    <div>
+      <div class="exp-row">
+        <span class="exp-label" id="hpExp">0 EXP</span>
+        <span class="exp-hint" id="hpExpNext"><strong>10</strong> exp untuk naik level</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" id="hpExpBar" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="stats-row">
+    <!-- Poin Card -->
+    <div class="stat-card stat-card-left">
+      <div>
+        <div class="stat-title">Poin Minggu Ini</div>
+        <div class="stat-pts" id="hpPoinMinggu">0 pts</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-sub">
+        <span class="stat-sub-label">Poin Terkumpul</span>
+        <span class="stat-sub-val" id="hpPoinTotal">0</span>
+      </div>
+    </div>
+
+    <!-- Misi Card -->
+    <div class="stat-card stat-card-right">
+      <div class="stat-title">Misi Utama</div>
+      <div class="mission-counts-hp">
+        <span id="hpMisiSelesai">0 Selesai</span>
+        <div class="dot"></div>
+        <span id="hpMisiBelum">0 Belum</span>
+      </div>
+      <div class="mission-steps" id="hpMissionSteps">
+        <!-- Di-render dinamis oleh homepage.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner → navigasi ke Misi -->
+  <a class="banner" href="misi.html">
+    <span class="banner-text">Selesaikan 5 misi untuk kumpulkan poin!</span>
+    <i class="ph ph-arrow-right banner-arrow"></i>
+  </a>
+
+  <!-- Rewards Card -->
+  <div class="card rewards-card">
+    <div class="rewards-title">Ada Hadiahnya Lohh!</div>
+    <div class="reward-items">
+
+      <a class="reward-item reward-item-yellow" href="hadiah.html?tab=barons" style="text-decoration:none; cursor:pointer;">
+        <div class="reward-bg-circle1"></div>
+        <div class="reward-bg-circle2"></div>
+        <div class="reward-img-wrap"><img src="assets/reward-1.png" alt="Reward 1" /></div>
+        <div class="reward-desc">Kumpulkan poin dan jadilah 3 pemenang tiap bulannya</div>
+      </a>
+
+      <a class="reward-item reward-item-green" href="hadiah.html?tab=weekly" style="text-decoration:none; cursor:pointer;">
+        <div class="reward-bg-circle1"></div>
+        <div class="reward-bg-circle2"></div>
+        <div class="reward-img-wrap"><img src="assets/reward-2.png" alt="Reward 2" /></div>
+        <div class="reward-desc">Selesaikan misi tiap minggunya dan jadilah pemenang</div>
+      </a>
+
+      <a class="reward-item reward-item-blue" href="hadiah.html?tab=lucky" style="text-decoration:none; cursor:pointer;">
+        <div class="reward-bg-circle1"></div>
+        <div class="reward-bg-circle2"></div>
+        <div class="reward-img-wrap"><img src="assets/reward-3.png" alt="Reward 3" /></div>
+        <div class="reward-desc">Kumpulkan poin dari sekarang, siapa tau kamu pemenangnya</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Leaderboard Card -->
+  <a class="leaderboard-card" href="leaderboard.html">
+    <div class="leaderboard-card__img">
+      <img src="assets/leaderboard-trophy.png" alt="Trofi Leaderboard" />
+    </div>
+    <div class="leaderboard-card__body">
+      <div class="leaderboard-card__title">Leaderboard</div>
+      <div class="leaderboard-card__desc">Penasaran berapa pencapaian kamu sejauh ini?</div>
+      <div class="leaderboard-card__cta">
+        <span>Cek Sekarang</span>
+        <i class="ph-bold ph-arrow-right"></i>
+      </div>
+    </div>
+  </a>
+
+  <!-- Reset Progress -->
+  <button class="reset-progress-btn" id="resetProgressBtn" type="button">
+    <i class="ph ph-arrow-counter-clockwise"></i>
+    <span>Reset Progress</span>
+  </button>
+
+</div>
+
+<!-- ════════ Reset Confirm Modal ════════ -->
+<div class="reset-overlay" id="resetOverlay">
+  <div class="reset-modal">
+    <div class="reset-icon">
+      <i class="ph ph-warning"></i>
+    </div>
+    <div class="reset-modal-title">Reset Semua Progress?</div>
+    <div class="reset-modal-desc">
+      Semua data akan direset termasuk EXP, level, poin, foto profil, dan status misi. Tindakan ini tidak bisa dibatalkan.
+    </div>
+    <div class="reset-modal-actions">
+      <button class="reset-confirm-btn" id="resetConfirmBtn" type="button">Ya, Reset Sekarang</button>
+      <button class="reset-cancel-btn" id="resetCancelBtn" type="button">Batal</button>
+    </div>
+  </div>
+</div>
+<div class="crop-overlay" id="cropOverlay">
+  <div class="crop-modal">
+    <div class="crop-header">
+      <div class="crop-title">Atur Foto Profil</div>
+      <button class="crop-close" id="cropClose" type="button" aria-label="Tutup">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <div class="crop-stage" id="cropStage">
+      <img id="cropImage" src="" alt="Crop" />
+      <div class="crop-mask"></div>
+    </div>
+    <div class="crop-controls">
+      <div class="crop-zoom-row">
+        <i class="ph ph-image"></i>
+        <input type="range" class="crop-zoom" id="cropZoom" min="1" max="3" step="0.01" value="1" />
+        <i class="ph ph-image" style="font-size:24px;"></i>
+      </div>
+      <button class="crop-save-btn" id="cropSave" type="button">Simpan Foto</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="avatarInput" accept="image/*" hidden />
+
+<script src="js/state.js"></script>
+<script src="js/avatar.js"></script>
+<script src="js/entrance.js"></script>
+<script src="js/homepage.js"></script>
+<script>
+  initHomepage();
+  initAvatar();
+  initEntrance(['.logo-bar', '.bio-card', '.stats-row', '.banner', '.rewards-card', '.cta-btn', '.reset-progress-btn']);
+</script>
+</body>
+</html>

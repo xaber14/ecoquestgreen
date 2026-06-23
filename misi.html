@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoQuest — Misi Saya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/misi.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+  <link rel="stylesheet" href="css/bottomsheet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+</head>
+<body>
+<div class="phone phone--nature">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <a class="back-btn" href="index.html" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M11 6l-6 6 6 6" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <div class="header-title">Misi Saya</div>
+    </div>
+
+  </div>
+
+  <!-- Sisa Waktu -->
+  <div class="card time-card">
+    <div class="time-row">
+      <div class="time-label">
+        <i class="ph ph-clock time-icon"></i>
+        Sisa Waktu
+      </div>
+      <div class="time-value" id="sisaWaktuVal">40 Jam 30 Menit</div>
+    </div>
+    <div class="bar-track">
+      <div class="bar-fill" id="sisaWaktuBar" style="width:54%"></div>
+    </div>
+    <div class="time-end">
+      <span id="sisaWaktuSub">Akan berakhir pada <strong>15 Mei 2026</strong>, pukul <strong>23:59 WIB</strong></span>
+    </div>
+  </div>
+
+  <!-- Misi Utama -->
+  <div class="mission-section">
+    <div class="mission-tab">Misi Utama</div>
+    <div class="mission-intro">Yuk selesaikan semua misi sebelum waktu habis!</div>
+
+    <div class="mission-scroll" id="missionScroll">
+
+      <!-- Card 1 -->
+      <div class="mission-card" data-mission="1">
+        <div class="mc-top">
+          <div class="mc-thumb">♻️</div>
+          <div class="mc-pts mc-pts-blue">+20 Pts</div>
+        </div>
+        <div class="mc-body">
+          <div class="badge badge-medium">Medium</div>
+          <div class="mc-title">1. Pilah Sampah</div>
+          <div class="mc-desc">Buang sampah anorganik di tempat sampah KG</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="mission-card" data-mission="2">
+        <div class="mc-top">
+          <div class="mc-thumb">💡</div>
+          <div class="mc-pts">+5 Pts</div>
+        </div>
+        <div class="mc-body">
+          <div class="badge badge-easy">Easy</div>
+          <div class="mc-title">2. Save Energy</div>
+          <div class="mc-desc">Matikan lampu setelah dari ruang meeting</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="mission-card" data-mission="3">
+        <div class="mc-top">
+          <div class="mc-thumb">🥗</div>
+          <div class="mc-pts">+5 Pts</div>
+        </div>
+        <div class="mc-body">
+          <div class="badge badge-easy">Easy</div>
+          <div class="mc-title">3. No Gorengan</div>
+          <div class="mc-desc">Makan makanan sehat tanpa goreng-gorengan</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="mission-card" data-mission="4">
+        <div class="mc-top">
+          <div class="mc-thumb">🏃</div>
+          <div class="mc-pts">+25 Pts</div>
+        </div>
+        <div class="mc-body">
+          <div class="badge badge-medium">Medium</div>
+          <div class="mc-title">4. Running at GBK</div>
+          <div class="mc-desc">Yuk lari di GBK dan bagikan afirmasi positifmu</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="mission-card" data-mission="5">
+        <div class="mc-top">
+          <div class="mc-thumb">🚲</div>
+          <div class="mc-pts">+40 Pts</div>
+        </div>
+        <div class="mc-body">
+          <div class="badge badge-hard">Hard</div>
+          <div class="mc-title">5. Bike to Work</div>
+          <div class="mc-desc">Kurangi polusi dengan bersepeda ke kantor</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mission-counts">
+      <span><strong id="misiSelesai">0</strong> Selesai</span>
+      <div class="mc-dot"></div>
+      <span><strong id="misiTersisa">5</strong> Misi Tersisa</span>
+    </div>
+  </div>
+
+  <!-- Time Bonus Poin -->
+  <div class="info-card">
+    <div class="info-main">
+      <div class="info-head">
+        <i class="ph ph-lightning info-icon"></i>
+        <div class="info-head-title">Time Bonus Poin</div>
+      </div>
+      <div class="info-desc">Semakin banyak Bonus Poin dari waktu yang tersisa saat semua misi selesai.</div>
+    </div>
+    <div class="info-footer">
+      <span class="lbl">Estimasi Bonus</span>
+      <span class="val" id="timeBonusVal">+20 Pts</span>
+    </div>
+  </div>
+
+  <!-- Lifestyle Bonus Poin -->
+  <div class="info-card">
+    <div class="info-main">
+      <div class="info-head">
+        <i class="ph ph-person-simple-bike info-icon"></i>
+        <div class="info-head-title">Lifestyle Bonus Poin</div>
+      </div>
+      <div class="info-desc">
+        Kamu tetap bisa menyelesaikan misi tingkat <strong>Easy</strong> setiap hari walaupun misi sebelumnya masih proses verifikasi ya.
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Pill -->
+  <div class="reset-pill">
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2v2.5H11" stroke="#2a2a2a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Misi akan tereset setiap hari Senin</span>
+  </div>
+
+</div>
+
+<!-- ════════ Bottom Sheet (Detail Misi) ════════ -->
+<div class="sheet-overlay" id="sheetOverlay">
+  <div class="bottom-sheet" id="bottomSheet" role="dialog" aria-modal="true">
+
+    <!-- Handle -->
+    <div class="sheet-handle" id="sheetHandle">
+      <div class="grab"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="sheet-header">
+      <div class="sheet-title" id="sheetTitle">Pilah Sampah</div>
+      <button class="sheet-close" id="sheetClose" aria-label="Tutup">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5l10 10M15 5L5 15" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="sheet-body">
+
+      <!-- Instruksi Misi -->
+      <div class="sheet-block">
+        <div class="sheet-block-head">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 4h9a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2V4z" stroke="#05603A" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M16 7h2a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2" stroke="#05603A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 8h5M8 11h5" stroke="#05603A" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="sheet-block-title">Instruksi Misi</div>
+        </div>
+        <div class="sheet-block-text" id="sheetInstruksi">
+          Buanglah sampah pada tempat sampah yang sudah disediakan disekitar area KG. Dan jangan lupa pisahkan sampah tertentu sesuai dengan keterangannya.
+        </div>
+      </div>
+
+      <!-- Contoh -->
+      <div class="sheet-block">
+        <div class="sheet-block-head">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z" stroke="#05603A" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9.3 19h5.4M10 21h4" stroke="#05603A" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="sheet-block-title">Contoh</div>
+        </div>
+        <div class="sheet-examples" id="sheetExamples">
+          <div class="sheet-example">🗑️</div>
+          <div class="sheet-example">♻️</div>
+          <div class="sheet-example">🌿</div>
+        </div>
+      </div>
+
+      <!-- Ambil Foto -->
+      <div class="sheet-block" id="ambilFotoBlock">
+        <div class="sheet-block-head">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="16" height="13" rx="2" stroke="#05603A" stroke-width="1.5"/>
+            <circle cx="9" cy="11" r="1.5" stroke="#05603A" stroke-width="1.3"/>
+            <path d="M5 18l4-4 3 2.5L16 12l3 3" stroke="#05603A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="sheet-block-title">Ambil Foto</div>
+        </div>
+
+        <!-- Pilihan upload -->
+        <div class="sheet-upload-row">
+          <button class="sheet-upload-btn" id="btnGallery" type="button">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="7" width="22" height="18" rx="2" stroke="#05603A" stroke-width="1.6"/>
+              <circle cx="11.5" cy="13.5" r="2" stroke="#05603A" stroke-width="1.4"/>
+              <path d="M6 24l6-6 4 3.5L21 16l5 5" stroke="#05603A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Foto Gallery</span>
+          </button>
+          <button class="sheet-upload-btn" id="btnCamera" type="button">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 11a2 2 0 0 1 2-2h2l1.5-2.5h11L23 9h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V11z" stroke="#05603A" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="16" cy="16.5" r="4" stroke="#05603A" stroke-width="1.6"/>
+            </svg>
+            <span>Foto Kamera</span>
+          </button>
+        </div>
+
+        <!-- Preview foto berhasil diupload -->
+        <div class="sheet-uploaded" id="uploadedPreview">
+          <div class="uploaded-thumb"><img id="uploadedThumb" src="" alt="Foto" /></div>
+          <div class="uploaded-info">
+            <div class="uploaded-title">Foto Berhasil Diupload</div>
+            <div class="uploaded-name" id="uploadedName">images_action.jpg</div>
+          </div>
+          <button class="uploaded-remove" id="uploadedRemove" type="button" aria-label="Hapus foto">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+
+        <div class="sheet-note">
+          Size maksimum foto <strong>3MB</strong> dan Pastikan foto terlihat jelas untuk mempermudah verifikasi
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA: Submit Foto Misi (muncul setelah upload) -->
+    <div class="sheet-cta" id="sheetCta">
+      <button class="sheet-submit-btn" id="submitFotoBtn" type="button">
+        <span>Submit Foto Misi</span>
+      </button>
+    </div>
+
+    <!-- hidden inputs -->
+    <input type="file" id="inputGallery" accept="image/*" hidden />
+  </div>
+</div>
+
+<!-- ════════ Camera Modal (WebRTC) ════════ -->
+<div class="camera-overlay" id="cameraOverlay">
+  <div class="camera-modal">
+    <div class="camera-header">
+      <div class="camera-title">Ambil Foto</div>
+      <button class="camera-close" id="cameraClose" type="button" aria-label="Tutup kamera">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <div class="camera-viewfinder">
+      <video id="cameraVideo" autoplay playsinline muted></video>
+      <canvas id="cameraCanvas" hidden></canvas>
+      <!-- corner guides -->
+      <div class="vf-corner tl"></div>
+      <div class="vf-corner tr"></div>
+      <div class="vf-corner bl"></div>
+      <div class="vf-corner br"></div>
+    </div>
+    <div class="camera-hint">Posisikan objek dalam frame lalu tekan tombol shutter</div>
+    <div class="camera-controls">
+      <button class="shutter-btn" id="shutterBtn" type="button" aria-label="Ambil foto">
+        <div class="shutter-ring"></div>
+        <div class="shutter-inner"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ Success Popup ════════ -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup" role="dialog" aria-modal="true">
+    <div class="popup-head">
+      <div class="popup-titles">
+        <div class="popup-title">Berhasil Submit</div>
+        <div class="popup-time" id="popupTime">Telah disubmit pada 15 Mei 2026, 10:45 WIB</div>
+      </div>
+      <div class="popup-image"><img id="popupImage" src="" alt="Foto misi" /></div>
+      <div class="popup-desc">Keren! Terima kasih karena sudah melakukan hal baik untuk lingkungan.</div>
+    </div>
+    <button class="popup-btn" id="popupContinue" type="button">
+      <span>Lanjutkan</span>
+    </button>
+  </div>
+</div>
+
+<!-- ════════ Level-Up Popup ════════ -->
+<div class="levelup-overlay" id="levelupOverlay" role="dialog" aria-modal="true" aria-labelledby="levelupTitle">
+  <div class="levelup-modal" id="levelupModal">
+
+    <!-- Confetti -->
+    <div class="levelup-confetti" id="levelupConfetti"></div>
+    <!-- Stars -->
+    <div class="levelup-stars" id="levelupStars"></div>
+
+    <!-- Badge level -->
+    <div class="levelup-glow">
+      <div class="levelup-badge" id="levelupBadge">Lv.1</div>
+    </div>
+
+    <!-- Copy -->
+    <div class="levelup-eyebrow">Level Up!</div>
+    <div class="levelup-title" id="levelupTitle">Kamu naik level!</div>
+
+    <!-- Rank chip -->
+    <div class="levelup-rank-chip">
+      <i class="ph ph-shield-star"></i>
+      <span id="levelupRank">Explorer</span>
+    </div>
+
+    <div class="levelup-divider"></div>
+
+    <!-- Stats -->
+    <div class="levelup-stats">
+      <div class="levelup-stat">
+        <div class="levelup-stat-val" id="levelupPts">0</div>
+        <div class="levelup-stat-lbl">Poin Total</div>
+      </div>
+      <div class="levelup-stat">
+        <div class="levelup-stat-val" id="levelupExp">0</div>
+        <div class="levelup-stat-lbl">EXP</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <button class="levelup-cta" id="levelupClose" type="button">Lanjutkan 🚀</button>
+  </div>
+</div>
+
+<script src="js/state.js"></script>
+<script src="js/dragScroll.js"></script>
+<script src="js/bottomSheet.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/misiPage.js"></script>
+<script src="js/uploadFoto.js"></script>
+<script src="js/entrance.js"></script>
+<script>
+  initDragScroll(document.getElementById('missionScroll'));
+  initBottomSheet();
+  initCamera();
+  initMisiPage();
+  initUploadFoto();
+  initEntrance(['.header', '.time-card', '.mission-section', '.info-card', '.reset-pill']);
+</script>
+</body>
+</html>

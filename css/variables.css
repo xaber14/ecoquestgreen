@@ -1,0 +1,49 @@
+/* ============================================================
+   EcoQuest — Design Tokens & CSS Variables
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --color-primary:        #05603A;
+  --color-primary-light:  #39B575;
+  --color-primary-pale:   #F6FEF9;
+  --color-secondary:      #e55225;
+
+  /* Neutrals */
+  --color-text-primary:   #2a2a2a;
+  --color-text-secondary: #5a5a5a;
+  --color-white:          #ffffff;
+  --color-bg:             #e9eef2;
+  --color-surface:        #f0f0f0;
+  --color-border:         #e7e7e7;
+  --color-elevated:       #e8e8e8;
+
+  /* Semantic */
+  --color-easy:    #5a5a5a;
+  --color-medium:  #dc6803;
+  --color-hard:    #d92d20;
+  --color-bonus-bg: #fef0c7;
+  --color-bonus-dark: #93370d;
+  --color-green-light: #e7ffef;
+  --color-green-pale:  #ecf8e6;
+
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+
+  /* Shadows */
+  --shadow-card:   none;
+  --shadow-card-lg: none;
+  --shadow-inset:  inset 0px 2px 5px rgba(32,32,32,0.2);
+
+  /* Radius */
+  --radius-sm:   8px;
+  --radius-md:   10px;
+  --radius-full: 1000px;
+
+  /* Spacing */
+  --gap-xs:  4px;
+  --gap-sm:  8px;
+  --gap-md:  12px;
+  --gap-lg:  16px;
+  --gap-xl:  24px;
+}
