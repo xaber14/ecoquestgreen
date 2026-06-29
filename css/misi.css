@@ -176,10 +176,10 @@
   margin: 0 12px;
 }
 .mission-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: #C8C8C8;
   border-radius: 10px;
 }
-.mission-scroll::-webkit-scrollbar-thumb:hover { background: #034d2e; }
+.mission-scroll::-webkit-scrollbar-thumb:hover { background: #aaaaaa; }
 
 .mission-card {
   background: var(--color-white);

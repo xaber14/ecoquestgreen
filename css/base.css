@@ -145,3 +145,13 @@ a.lb-cta:active,
 .shutter-btn:active {
   transform: scale(0.90);
 }
+
+/* ── KG Media theme: background override ── */
+[data-theme="kg-media"] .phone {
+  background: linear-gradient(180deg, #c8e9ff 0%, #f7f7f7 45%);
+}
+[data-theme="kg-media"] .phone--nature {
+  background-image: none;
+  background-color: transparent;
+  padding-top: 20px;
+}

@@ -47,3 +47,12 @@
   --gap-lg:  16px;
   --gap-xl:  24px;
 }
+
+/* ── Tema: KG Media (Biru) ── */
+[data-theme="kg-media"] {
+  --color-primary:        #0a5388;
+  --color-primary-light:  #429cdd;
+  --color-primary-pale:   #f2f7fb;
+  --color-green-light:    #e8f4fd;
+  --color-green-pale:     #e8f4fd;
+}
